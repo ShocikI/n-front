@@ -11,9 +11,11 @@ export const GoogleMaps = () => {
   const [ location, setLocation ] = useState(''); // Input value
   const [ queryParams, setQueryParams ] = useState('');
   const [ autoComplete, setAutoComplete ] = useState<google.maps.places.Autocomplete | null>(null); // AutoComplete Input
+  const [ areaRadius, setAreaRadius ] = useState(5);
 
   const handleChangeLocation = (address: string) => setLocation(address);
   const handleChangeQueryParams = (newQuery: string) => setQueryParams(newQuery);
+  const handleSetRadius = (radius: number) => setAreaRadius(radius)
 
   useEffect(() => {
     const initMap = async () => {
@@ -42,11 +44,8 @@ export const GoogleMaps = () => {
 
       const map = new Map(mapRef.current as HTMLDivElement, optionsMap);
       
-      // Prepare geocoder
       const geocoder = new Geocoder();
-      // Add marker style
       const markerStyle = new PinElement({ background: 'orange', borderColor: 'white', glyphColor: 'white' });
-      // Prepare marker to show on map
       const marker = new AdvancedMarkerElement({ content: markerStyle.element, map: map });
 
       const autoCompleteInput = new Autocomplete(autoCompleteInputRef.current as HTMLInputElement, optionsAutoComplete)
@@ -61,15 +60,12 @@ export const GoogleMaps = () => {
       marker: google.maps.marker.AdvancedMarkerElement,
       geocoder: google.maps.Geocoder
     ) => { 
-      // Prepare queryParamsParam
       var jsonPoint = position.toJSON()
-      setQueryParams(`${jsonPoint.lat}-${jsonPoint.lng}`)
+      setQueryParams(`${jsonPoint.lat.toPrecision(6)}-${jsonPoint.lng.toPrecision(6)}`)
 
-      // Change marker position
       marker.position = position
       map.panTo(position);
 
-      // Get address from point
       geocoder.geocode({ location: position })
         .then((response) => {
           if (response.results[0]) {
@@ -87,9 +83,11 @@ export const GoogleMaps = () => {
       <StartSearchbar 
         location={location} 
         queryParams={queryParams} 
+        areaRadius={areaRadius}
+        inputRef={autoCompleteInputRef}
         handleChangeQueryParams={handleChangeQueryParams} 
         handleChangeLocation={handleChangeLocation}
-        inputRef={autoCompleteInputRef}
+        handleSetRadius={handleSetRadius}
         />
       <div className="h-[60vh] w-full" ref={mapRef}/>
     </div>
