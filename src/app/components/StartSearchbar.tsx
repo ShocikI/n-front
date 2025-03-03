@@ -3,13 +3,14 @@ import React from 'react';
 import { useRouter } from 'next/navigation';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight, faLocationCrosshairs} from '@fortawesome/free-solid-svg-icons';
-
+import { RadiusSelect } from './RadiusSelect';
 
 type Props = {
   location: string,
   queryParams: string,
   areaRadius: number,
   inputRef: React.RefObject<HTMLInputElement>,
+  onSearch: (address: string) => void,
   handleChangeQueryParams: (newQueryParams: string) => void,
   handleChangeLocation: (address: string) => void,
   handleSetRadius: (radius: number) => void
@@ -48,18 +49,8 @@ const StartSearchbar = ({
         <input ref={inputRef} placeholder="Where you are?" value={location} 
           className='w-full pl-2 pr-4 border-none' onChange={handleOnChangeLocation} 
         />
-        <select onChange={handleOnChangeRadius}
-          className='w-24 h-10 pl-1 mx-1 border-none bg-primary rounded-lg hover:text-white hover:bg-secondary focus:text-black focus:bg-primary' 
-        >
-          <option value="5">5 km</option>
-          <option value="10">10 km</option>
-          <option value="20">20 km</option>
-          <option value="30">30 km</option>
-          <option value="60">60 km</option>
-          <option value="120">120 km</option>
-          <option value="180">180 km</option>
-          <option value="240">240 km</option>
-        </select>
+
+        <RadiusSelect handleOnChangeRadius={handleOnChangeRadius}/>
 
         <button className='box-border h-10 w-10' type="submit" onClick={handleGetCurrentLocation}>
           <FontAwesomeIcon icon={faLocationCrosshairs} 
@@ -72,7 +63,6 @@ const StartSearchbar = ({
             className='size-6 mx-1 p-2 rounded-lg bg-primary hover:text-white hover:bg-secondary' 
           />
         </button>
-
       </div>
     </div>
   );
