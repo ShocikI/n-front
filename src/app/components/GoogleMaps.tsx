@@ -17,7 +17,7 @@ export const GoogleMaps = () => {
   const handlePlaceSelection = async (position: google.maps.LatLngLiteral) => {
     if (!mapInstance.current || !markerInstance.current || !geocoderInstance.current) return;
 
-    setQueryParams(`${position.lat.toPrecision(6)}-${position.lng.toPrecision(6)}`);
+    setQueryParams(`${position.lng.toPrecision(6)}-${position.lat.toPrecision(6)}`);
 
     markerInstance.current.position = position;
     mapInstance.current.panTo(position);

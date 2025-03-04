@@ -27,9 +27,9 @@ const StartSearchbar = ({
   const handleGetCurrentLocation = () => {
     navigator.geolocation.getCurrentPosition(
       (position) => {
-        const lat = position.coords.latitude;
         const lng = position.coords.longitude;
-        handleChangeQueryParams(`${lat}-${lng}`);
+        const lat = position.coords.latitude;
+        handleChangeQueryParams(`${lng}-${lat}`);
         routeToEventsView()
       }
     );
