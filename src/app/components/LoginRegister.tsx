@@ -4,10 +4,9 @@ import { LoginForm } from "./forms/LoginForm";
 import { RegistrationForm } from "./forms/RegistrationForm";
 
 
-
 export const LoginRegister = () => {
     const [ isLoginPage, setIsLoginPage ] = useState(true)
-
+    
     const toggleLoginPage = () => setIsLoginPage(!isLoginPage);
     
     return (

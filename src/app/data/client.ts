@@ -1,66 +1,91 @@
 import axios from "axios";
-import { Category } from "./Categories";
 import { Event } from "./Event";
+import { Category } from "./Categories";
 
-export const categories: Category[] = [
-    {id: 0, name: 'party' },
-    {id: 1, name: 'cinema' },
-    {id: 2, name: 'theatre' },
-    {id: 3, name: 'stand-up' },
-    {id: 4, name: 'special event' },
-    {id: 5, name: 'sale' },
-  ];
-
-const events: Event[] = [
-{
-    title: 'Jechanka',
-    date: new Date('2023-12-27T18:00:00Z'),
-    categoryId: 0,
-    category: {id: 0, name: "party"},
-    description: 'latino disco',
-    price: 0.0,
-    avaliable_places: 0,
-},
-{
-    title: 'Smiechy hihy',
-    date: new Date('2023-12-28T12:00:00Z'),
-    categoryId: 3,
-    category: {id: 3, name: "stand-up"},
-    description: 'śmieszne rzeczy',
-    price: 50.0,
-    avaliable_places: 100,
-},
-{
-    title: 'Makbet',
-    date: new Date('2023-12-30T12:00:00Z'),
-    categoryId: 2,
-    category: {id: 2, name: "theatre"},
-    description: 'to jest kurwa dramat',
-    price: 30.0,
-    avaliable_places: 300,
-},
-];
 
 const axiosClient = axios.create({
-    baseURL: `http://127.0.0.1:8000/api`,
-    headers: {'Content-Type': 'application/json',}
+    baseURL: `http://127.0.0.1:8000`,
+    withCredentials: true,
+    headers: { 'Content-Type': 'application/json', }
 })
 
+
 export const client = {
-    getCategories: () => categories,
-    getEvents: () => {
-        const response = axiosClient.get(`/events`);
-        console.log(response);
-    },
-    getEventsByCategories: (categoryIds:number[]) => {
-        const response = axiosClient.get(`/events`);
-        // const response = fetch(`http://127.0.0.1:8000/api/events`)
-        console.log(response);
-        if (categoryIds.length) {
-            return events.filter((event) => categoryIds.includes(event.categoryId));
+    getCategories: async () => {
+        try {
+            const response = await axiosClient.get<Category[]>(`/api/categories`);
+            // console.log(response.data);
+            return response.data;
         }
-        else {
-            return events
+        catch (e) {
+            console.error(e);
+            throw e;
+        }
+    },
+
+    getEvents: async (point: string | null, radius: string | null, categoryIds: string[] | null): Promise<Event[]> => {
+        let query = `/api/events/?point=${point}&radius=${radius}`;
+        if (categoryIds) { query = `${query}&categoryIds=${categoryIds}` };
+        try {
+            const response = await axiosClient.get(query);
+            // console.log(response.data);
+            return response.data;
+        } catch (e) {
+            console.error(e);
+            throw e;
+        }
+    },
+
+    createUser: async (user: string, email: string, password: string) => {
+        var status = 0;
+        try {
+            const response = await axiosClient.post('/api/users/', {
+                "username": user,
+                "email": email,
+                "password": password
+            });
+            status = response.status
+        } catch (e: any) {
+            status = e.response.status;
+        }
+
+        return status;
+    },
+
+    logIn: async (username: string, password: string) => {
+        try {
+            const response = await axiosClient.post('/login/', {
+                "username": username,
+                "password": password
+            });
+            return response.data;
+        } catch (e: any) {
+            return null;
+        }
+    },
+
+
+    setUserToken: (token: string) => document.cookie = `token=${token}; path=/; secure;`,
+
+    logOut: async () => {
+        try {
+            await axiosClient.post("/logout/");
+        } catch (e) { }
+    },
+
+    getToken: (): string | null => {
+        const cookies = document.cookie.split("; ");
+        const tokenCookie = cookies.find(row => row.startsWith("token="));
+        return tokenCookie ? tokenCookie.split("=")[1] : null;
+    },
+
+    checkToken: async () => {
+        try {
+            const response = await axiosClient.get("/login/");
+            return response.data;
+        } catch (e) {
+            return null;
         }
     }
+
 }
