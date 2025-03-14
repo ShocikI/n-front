@@ -1,14 +1,21 @@
-import { GoogleMaps } from "./components/GoogleMaps";
-import { LoginRegister } from "./components/LoginRegister";
+import { client } from "./data/client";
+import { StartLayout } from "./components/layouts/StartLayout";
+import { LoggedStartLayout } from "./components/layouts/LoggedStartLayout";
+import { cookies } from "next/headers";
 
-export default function Home() {
+
+export default async function Home() {
+  const cookieStore = await cookies();
+  const cookieHeader = cookieStore.getAll()
+    .map(({ name, value }) => `${name}=${value}`)
+    .join("; ");
+
+  const isLogged = await client.checkToken(cookieHeader);
+  console.log(`Logged: ${isLogged}`)
+  
   return (
     <main className="w-screen h-screen bg-accent">
-      <div className="flex h-screen items-center justify-evenly">
-        <GoogleMaps />
-        <div className="divider divider-horizontal divider-primary h-[80vh] mt-[10vh] basis-1/8"/>
-        <LoginRegister />
-      </div>
+      { !!isLogged ? <LoggedStartLayout /> : <StartLayout /> }
     </main>
   );
 }

@@ -2,11 +2,10 @@ import axios from "axios";
 import { Event } from "./Event";
 import { Category } from "./Categories";
 
-
 const axiosClient = axios.create({
-    baseURL: `http://127.0.0.1:8000`,
+    baseURL: `${process.env.NEXT_PUBLIC_API_URL}`,
     withCredentials: true,
-    headers: { 'Content-Type': 'application/json', }
+    headers: { 'Content-Type': 'application/json', },
 })
 
 
@@ -64,13 +63,13 @@ export const client = {
         }
     },
 
-
-    setUserToken: (token: string) => document.cookie = `token=${token}; path=/; secure;`,
-
     logOut: async () => {
         try {
-            await axiosClient.post("/logout/");
-        } catch (e) { }
+            const response = await axiosClient.post("/logout/");
+            return response;
+        } catch (e) {
+            return false;
+        }
     },
 
     getToken: (): string | null => {
@@ -79,13 +78,24 @@ export const client = {
         return tokenCookie ? tokenCookie.split("=")[1] : null;
     },
 
-    checkToken: async () => {
+    checkToken: async (cookieHeader?: string) => {
         try {
-            const response = await axiosClient.get("/login/");
-            return response.data;
-        } catch (e) {
+            const response = await fetch(`http://127.0.0.1:8000/login-check/`, {
+                method: "GET",
+                cache: "no-store",
+                credentials: "include",
+                headers: cookieHeader ? { Cookie: cookieHeader } : {},
+            });
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`)
+            }
+            const { user } = await response.json();
+
+            return user;
+        } catch (error) {
+            console.error("Error:", error);
             return null;
         }
-    }
+    },
 
 }

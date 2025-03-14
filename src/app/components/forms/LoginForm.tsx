@@ -3,8 +3,11 @@
 import { useState } from "react";
 import { clsx } from "clsx";
 import { client } from "@/app/data/client";
+import { useRouter } from "next/navigation";
+
 
 export const LoginForm = () => {
+    const router = useRouter();
     const [ username, setUsername ] = useState('');
     const [ password, setPassword ] = useState('');
     const [ message, setMessage ] = useState('');
@@ -19,10 +22,8 @@ export const LoginForm = () => {
         if (token == null) {
             setMessage("User with this password doesn't exists.");
         } else {
-            setMessage("Logged in!");
-            client.setUserToken(token);
+            router.refresh();
         }
-        
         setTimeout(() => { setMessage('') }, 10000);
     }
 
