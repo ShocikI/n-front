@@ -3,9 +3,8 @@ import './globals.css';
 import ReactDOM from 'react-dom';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
-import { faTwitter, faFontAwesome } from '@fortawesome/free-brands-svg-icons';
 
-library.add(fas, faTwitter, faFontAwesome);
+library.add(fas);
 
 const montserrat = Montserrat({ subsets: ['latin'] });
 
@@ -15,7 +14,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-theme="bumblebee">
+    <html lang="en" >
       <body className={montserrat.className}>{children}</body>
     </html>
   );

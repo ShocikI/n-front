@@ -1,24 +1,46 @@
 'use client';
 
-import { useState } from "react";
-import { clsx } from "clsx";
+import { useState, FC } from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { client } from "@/app/data/client";
 import { useRouter } from "next/navigation";
 
 
-export const LoginForm = () => {
+const formSchema = z.object({
+    username: z.string().min(2, {
+        message: "Username must be at least 8 characters."
+    }).max(50, {
+        message: "Username could have maximum 50 characters."
+    }),
+    password: z.string().min(8, {
+        message: "Password must be at least 8 characters."
+    })
+})
+
+type FormSchemaType = z.infer<typeof formSchema>
+
+
+export const LoginForm: FC = () => {
     const router = useRouter();
-    const [ username, setUsername ] = useState('');
-    const [ password, setPassword ] = useState('');
     const [ message, setMessage ] = useState('');
 
-    const onChangeUsername = (e: any) => setUsername(e.target.value);
-    const onChangePassword = (e: any) => setPassword(e.target.value);
+    const form = useForm<FormSchemaType>({
+        resolver: zodResolver(formSchema),
+        defaultValues: {
+            username: "" ,
+            password: ""
+        }
+    });
 
-    const handleSubmit = async (e: any) => {
-        e.preventDefault();
-        const token = await client.logIn(username, password);
-
+    async function onSubmit(values: FormSchemaType) {
+        const token = await client.logIn(values.username, values.password)
+        
         if (token == null) {
             setMessage("User with this password doesn't exists.");
         } else {
@@ -28,17 +50,48 @@ export const LoginForm = () => {
     }
 
     return (
-        <form className="flex flex-col" method="POST" onSubmit={handleSubmit}>
-            <p className={clsx("w-full text-center mb-5 font-medium underline", !message && "hidden")}>{message}</p>
-            <input className="input label p-2 my-2" 
-                type="text" name="username" placeholder="Username" 
-                onChange={onChangeUsername} required
-            />
-            <input className="input label p-2 my-2" 
-                type="password" name="password" placeholder="Password" 
-                onChange={onChangePassword} required
-            />
-            <input className="btn btn-primary p-2 my-2 font-extrabold" type="submit" value="Log in"/>
-        </form>
+        <Form {...form}>
+            {message && 
+                <Alert className="mb-4" variant="destructive">
+                    <AlertTitle>Heads up!</AlertTitle>
+                    <AlertDescription>
+                        {message}
+                    </AlertDescription>
+                </Alert>
+            }
+            <form onSubmit={form.handleSubmit(onSubmit)} className="min-w-[300px] space-y-4">
+                <FormField
+                control={form.control}
+                name="username"
+                render={({ field }) => (
+                    <FormItem>
+                    <FormLabel>Username</FormLabel>
+                    <FormControl>
+                        <Input placeholder="Type username" {...field} />
+                    </FormControl>
+                    <FormDescription />
+                    <FormMessage />
+                    </FormItem>
+                )}
+                />
+                <FormField
+                control={form.control}
+                name="password"
+                render={({ field }) => (
+                    <FormItem>
+                        <FormLabel>Password</FormLabel>
+                        <FormControl>
+                            <Input placeholder="Type password" type="password" {...field} />
+                        </FormControl>
+                        <FormDescription />
+                        <FormMessage />
+                    </FormItem>
+                )}
+                />
+                <Button type="submit">Log in</Button>
+            </form> 
+            
+        </Form>
+
     )
 }

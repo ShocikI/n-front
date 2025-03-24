@@ -1,21 +1,10 @@
-import { client } from "./data/client";
-import { StartLayout } from "./components/layouts/StartLayout";
-import { LoggedStartLayout } from "./components/layouts/LoggedStartLayout";
-import { cookies } from "next/headers";
+import { GoogleMaps } from "./components/GoogleMaps";
+import { Layout } from "./components/Layout";
 
-
-export default async function Home() {
-  const cookieStore = await cookies();
-  const cookieHeader = cookieStore.getAll()
-    .map(({ name, value }) => `${name}=${value}`)
-    .join("; ");
-
-  const isLogged = await client.checkToken(cookieHeader);
-  console.log(`Logged: ${isLogged}`)
-  
+export default function Home() {  
   return (
-    <main className="w-screen h-screen bg-accent">
-      { !!isLogged ? <LoggedStartLayout /> : <StartLayout /> }
-    </main>
+    <Layout>
+      <GoogleMaps/>
+    </Layout>
   );
 }
