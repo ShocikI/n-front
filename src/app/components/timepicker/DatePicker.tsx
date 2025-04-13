@@ -5,11 +5,7 @@ import { Calendar as CalendarIcon } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Calendar } from "@/components/ui/calendar"
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover"
+import { Popover, PopoverContent, PopoverTrigger, } from "@/components/ui/popover"
 import { TimePicker } from "./TimePicker"
  
 type Props = {
@@ -24,7 +20,7 @@ export const DatePicker = ({setDate, date}: Props) => {
         <Button
           variant={"outline"}
           className={cn(
-            "w-[280px] justify-start text-left font-normal",
+            "w-max pr-4 justify-start text-left font-normal",
             !date && "text-muted-foreground"
           )}
         >
