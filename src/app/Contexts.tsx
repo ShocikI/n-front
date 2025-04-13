@@ -5,8 +5,6 @@ type SearchbarContextType = {
   setQuery: Dispatch<SetStateAction<string>>;
 };
 
-export const AddressContext = createContext('');
-
 export const SearchBarContext = createContext<SearchbarContextType>({
   query: '',
   setQuery: () => {},
