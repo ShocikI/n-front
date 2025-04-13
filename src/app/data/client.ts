@@ -1,6 +1,7 @@
 import axios from "axios";
 import { Event } from "./Event";
 import { Category } from "./Categories";
+import { User } from "../data/User";
 
 const axiosClient = axios.create({
     baseURL: `${process.env.NEXT_PUBLIC_API_URL}`,
@@ -32,6 +33,22 @@ export const client = {
         } catch (e) {
             console.error(e);
             throw e;
+        }
+
+    },
+
+    getUserData: async (username: string | undefined) => {
+        try {
+            const response = await axiosClient.get(`api/users/${username}`)
+            return {
+                data: response.data,
+                status: response.status
+            }
+        } catch (e) {
+            return {
+                data: null,
+                status: 404
+            }
         }
     },
 
@@ -72,15 +89,9 @@ export const client = {
         }
     },
 
-    getToken: (): string | null => {
-        const cookies = document.cookie.split("; ");
-        const tokenCookie = cookies.find(row => row.startsWith("token="));
-        return tokenCookie ? tokenCookie.split("=")[1] : null;
-    },
-
     checkToken: async (cookieHeader?: string) => {
         try {
-            const response = await fetch(`http://127.0.0.1:8000/login-check/`, {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/login-check/`, {
                 method: "GET",
                 cache: "no-store",
                 credentials: "include",
@@ -97,5 +108,84 @@ export const client = {
             return null;
         }
     },
+
+    createNewEvent: async (
+        title: string, date: string, category: number, address: string, location: { latitude: number, longitude: number },
+        description?: string, price?: number, avaliablePlaces?: number, image?: string | File,
+    ) => {
+        const formData = new FormData();
+        formData.append("title", title);
+        formData.append("date", date);
+        formData.append("category", "" + category);
+        formData.append("address", address);
+        formData.append("location[latitude]", "" + location.latitude);
+        formData.append("location[longitude]", "" + location.longitude);
+
+        if (description) formData.append("description", description);
+        if (price) formData.append("price", "" + price);
+        if (avaliablePlaces) formData.append("avaliablePlaces", "" + avaliablePlaces);
+        if (image) formData.append("image", image);
+
+        var status;
+        const axiosEvent = axios.create({
+            baseURL: `${process.env.NEXT_PUBLIC_API_URL}`,
+            withCredentials: true,
+        });
+
+        try {
+            const response = await axiosEvent.post(`/api/events/`, formData)
+            status = response.status
+        } catch (e: any) {
+            status = e.response.status;
+        }
+
+        return status;
+    },
+
+    changeUserAvatar: async (username?: string, avatar?: string | File) => {
+        if (!username) throw new Error("Username is required");
+
+        const formData = new FormData();
+        if (avatar) formData.append("avatar", avatar);
+
+        var status;
+        const axiosEvent = axios.create({
+            baseURL: `${process.env.NEXT_PUBLIC_API_URL}`,
+            withCredentials: true,
+        });
+
+        try {
+            const response = await axiosEvent.patch(`/api/users/${username}/`, formData)
+            status = response.status
+        } catch (e: any) {
+            status = e.response.status;
+        }
+
+        return status;
+    },
+
+    changeUserDescription: async (username?: string, description?: string) => {
+        if (!username) throw new Error("Username is required");
+
+        const formData = new FormData();
+        if (description) formData.append("description", description);
+
+        var status;
+        const axiosEvent = axios.create({
+            baseURL: `${process.env.NEXT_PUBLIC_API_URL}`,
+            withCredentials: true,
+        });
+
+        try {
+            const response = await axiosEvent.patch(`/api/users/${username}/`, formData)
+            status = response.status
+        } catch (e: any) {
+            status = e.response.status;
+        }
+
+        return status;
+    }
+
+
 
 }
