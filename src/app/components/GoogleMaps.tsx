@@ -3,21 +3,30 @@ import React, { useEffect, useState, useRef } from "react";
 import { Loader } from "@googlemaps/js-api-loader";
 import StartSearchbar from "./StartSearchbar";
 
-export const GoogleMaps = () => {
+type Props = { 
+  changeLocation?: (lat: number, lng: number) => void,
+  changeFormAddress?: (new_address: string) => void,
+  onlyMap?: boolean 
+}
+
+export const GoogleMaps = ({ changeLocation, changeFormAddress, onlyMap }: Props) => {
   const mapRef = useRef<HTMLDivElement>(null);
   const autoCompleteInputRef = useRef<HTMLInputElement>(null);
   const mapInstance = useRef<google.maps.Map | null>(null);
   const markerInstance = useRef<google.maps.marker.AdvancedMarkerElement | null>(null);
   const geocoderInstance = useRef<google.maps.Geocoder | null>(null);
 
-  const [location, setLocation] = useState('');
-  const [queryParams, setQueryParams] = useState('');
-  const [areaRadius, setAreaRadius] = useState(5);
+  const [ address, setAddress ] = useState('');
+  const [ queryParams, setQueryParams ] = useState('');
+  const [ areaRadius, setAreaRadius ] = useState(5);
 
   const handlePlaceSelection = async (position: google.maps.LatLngLiteral) => {
     if (!mapInstance.current || !markerInstance.current || !geocoderInstance.current) return;
+    const lng = position.lng.toPrecision(6);
+    const lat = position.lat.toPrecision(6)
 
-    setQueryParams(`${position.lng.toPrecision(6)}-${position.lat.toPrecision(6)}`);
+    setQueryParams(`${lng}-${lat}`);
+    changeLocation?.( Number(lat), Number(lng) );
 
     markerInstance.current.position = position;
     mapInstance.current.panTo(position);
@@ -25,7 +34,9 @@ export const GoogleMaps = () => {
     const response = await geocoderInstance.current.geocode({ location: position });
     if (response.results[0]) {
       const components = response.results[0].address_components;
-      setLocation(`${components[1].long_name} ${components[0].long_name}, ${components[2].long_name}`);
+      const new_address = `${components[1].long_name} ${components[0].long_name}, ${components[2].long_name}`
+      setAddress(new_address);
+      changeFormAddress?.(new_address);
     }
   };
 
@@ -98,18 +109,19 @@ export const GoogleMaps = () => {
   }, []);
 
   return (
-    <div className="flex flex-col basis-2/4">
+    <div className="flex flex-col h-full w-full">
       <StartSearchbar 
-        location={location} 
+        address={address} 
         queryParams={queryParams} 
         areaRadius={areaRadius}
         inputRef={autoCompleteInputRef}
         onSearch={handleAddressSearch}
-        handleChangeLocation={setLocation}
+        handleChangeAddress={setAddress}
         handleChangeQueryParams={setQueryParams}
         handleSetRadius={setAreaRadius}
+        onlyMap={onlyMap}
       />
-      <div className="h-[60vh] w-full" ref={mapRef} />
+      <div className="h-full w-full" ref={mapRef} />
     </div>
   );
 };
