@@ -1,10 +1,10 @@
 'use client'
 import { useState } from "react";
-import { LoginRegister } from "./LoginRegister";
-import { UserPanel } from "./UserPanel";
 import { faArrowRight, faArrowLeft} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { clsx } from "clsx";
+import { UserPanel } from "./UserPanel";
+import { LoginRegister } from "./LoginRegister";
 
 type Props = {"user": string}
 

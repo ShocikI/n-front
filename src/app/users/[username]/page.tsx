@@ -1,9 +1,10 @@
+import { UserProfilePage } from "@/app/components/pages/UserProfilePage";
 import { Layout } from "../../components/Layout";
 
 export default function Home() {  
   return (
     <Layout>
-        <p>In progress</p>
+        <UserProfilePage/>
     </Layout>
   );
 }
