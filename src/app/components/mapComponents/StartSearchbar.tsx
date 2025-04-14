@@ -3,7 +3,7 @@ import React from 'react';
 import { useRouter } from 'next/navigation';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight, faLocationCrosshairs} from '@fortawesome/free-solid-svg-icons';
-import { RadiusSelect } from './selects/RadiusSelect';
+import { RadiusSelect } from '../mapComponents/RadiusSelect';
 
 type Props = {
   address: string,

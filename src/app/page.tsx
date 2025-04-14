@@ -1,4 +1,4 @@
-import { GoogleMaps } from "./components/GoogleMaps";
+import { GoogleMaps } from "./components/mapComponents/GoogleMaps";
 import { Layout } from "./components/Layout";
 
 export default function Home() {  
