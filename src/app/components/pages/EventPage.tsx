@@ -1,11 +1,12 @@
 'use client';
-import { SearchBarContext } from '../Contexts';
-import { AllEvents } from './AllEvents';
-import SearchBar from './SearchBar';
 import { useContext, useEffect, useState } from 'react';
-import { client } from '../data/client';
 import { useSearchParams, useRouter } from 'next/navigation';
-import { Event } from '../data/Event';
+import { SearchBarContext } from '@/app/Contexts';
+import { client } from '@/app/data/client';
+import { SearchBar } from '../SearchBar';
+import { AllEvents } from '../AllEvents';
+import { Event } from '@/app/data/Event';
+
 
 
 const EventPage = () => {
