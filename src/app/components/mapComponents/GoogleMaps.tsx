@@ -1,7 +1,7 @@
 'use client';
 import React, { useEffect, useState, useRef } from "react";
 import { Loader } from "@googlemaps/js-api-loader";
-import StartSearchbar from "./StartSearchbar";
+import StartSearchbar from "../mapComponents/StartSearchbar";
 
 type Props = { 
   changeLocation?: (lat: number, lng: number) => void,
