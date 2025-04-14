@@ -1,6 +1,9 @@
+export interface LinkType {
+    id: number,
+    title: string
+}
+
 export interface Links {
-    link_url: string
-    type: {
-        title: string
-    },
+    linkUrl: string
+    linkType: LinkType
 }
