@@ -48,9 +48,9 @@ export const client = {
 
     },
 
-    getUserData: async (username: string | undefined) => {
+    getUserData: async (username?: string) => {
         try {
-            const response = await axiosClient.get(`api/users/${username}`)
+            const response = await axiosClient.get(`/api/users/${username}`)
             return {
                 data: response.data,
                 status: response.status
