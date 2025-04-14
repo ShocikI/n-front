@@ -195,8 +195,43 @@ export const client = {
         }
 
         return status;
-    }
+    },
 
+    createUserLink: async (type: number, url: string) => {
+        const formData = new FormData();
+        formData.append("type_id", type.toString());
+        formData.append("link_url", url)
+
+        try {
+            const response = await axiosClient.post(`/api/user_links/`, formData)
+            return response.status
+        } catch (e: any) {
+            return e.response?.status || 500;
+        }
+    },
+
+    getUserLinks: async (username?: string) => {
+        try {
+            const response = await axiosClient.get(`/api/users/${username}/user_links/`)
+            return {
+                data: response.data,
+                status: response.status
+            }
+        } catch (e: any) {
+            return {
+                data: null,
+                status: 404
+            }
+        }
+    },
+
+    deleteUserLink: async (id: number) => {
+        try {
+            await axiosClient.delete(`api/user_links/${id}/`);
+        } catch (e: any) {
+            console.error(e);
+        }
+    }
 
 
 }
