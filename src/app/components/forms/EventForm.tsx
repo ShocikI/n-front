@@ -14,7 +14,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 
 import { DatePicker } from "../timepicker/DatePicker";
-import { GoogleMaps } from "../GoogleMaps";
+import { GoogleMaps } from "../mapComponents/GoogleMaps";
 import { Category } from "@/app/data/Categories";
 import { client } from "@/app/data/client";
 
