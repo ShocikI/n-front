@@ -3,12 +3,12 @@
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { FC } from "react";
+import { FC, useState } from "react";
 import { client } from "@/app/data/client";
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { useRouter } from "next/navigation";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 const formSchema = z.object({
     avatar: z.union([
@@ -22,11 +22,14 @@ const formSchema = z.object({
 type FormSchemaType = z.infer<typeof formSchema>;
 
 type Props = {
-    username?: string
+    username?: string,
+    flag: boolean,
+    setFlag: (flag: boolean) => void,
 }
 
-export const UpdateUserAvatarForm: FC<Props> = ({ username }) => {
-    const router = useRouter();
+export const UpdateUserAvatarForm: FC<Props> = ({ username, flag, setFlag }) => {
+    const [ message, setMessage ] = useState('');
+
     const form = useForm<FormSchemaType>({
             resolver: zodResolver(formSchema),
             defaultValues: {
@@ -42,16 +45,32 @@ export const UpdateUserAvatarForm: FC<Props> = ({ username }) => {
     async function onSubmit(values: FormSchemaType) {
         const status = await client.changeUserAvatar(username, values.avatar);
         switch (status) {
-            case 201:
-                router.refresh();
-        }   
-    }
+            case 200:
+                setFlag(!flag); break;
+            case 401: 
+                setMessage("Unauthorized access."); break;
+            case 404:
+                setMessage("Unsuccessful update"); break;
+            case 500:
+                setMessage("Server issue."); break;
+            default:
+                setMessage("Unpredicted error."); break;
+            };
+                
+            setTimeout(() => { setMessage('') }, 10000);
+    }  
 
     return (
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)}
                 className="flex flex-col w-fit bg-gray-200 rounded space-x-4 p-4"
             >
+                {message && 
+                    <Alert className="mb-4" variant="destructive">
+                        <AlertTitle>{message}</AlertTitle>
+                        <AlertDescription/>
+                    </Alert>
+                }
                 <FormField
                 control={form.control}
                 name="avatar"
@@ -66,7 +85,7 @@ export const UpdateUserAvatarForm: FC<Props> = ({ username }) => {
                     </FormItem>
                 )}
                 />
-                <div className="flex flex-row justify-center">
+                <div className="flex flex-row justify-center mt-2">
                     <Button type="submit">Update avatar</Button>
                 </div>
             </form>
