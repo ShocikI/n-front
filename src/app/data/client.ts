@@ -23,6 +23,17 @@ export const client = {
         }
     },
 
+    getLinkTypes: async () => {
+        try {
+            const response = await axiosClient.get(`/api/link_types`);
+            console.log(response.data);
+            return response.data;
+        } catch (e) {
+            console.error(e);
+            throw e;
+        }
+    },
+
     getEvents: async (point: string | null, radius: string | null, categoryIds: string[] | null): Promise<Event[]> => {
         let query = `/api/events/?point=${point}&radius=${radius}`;
         if (categoryIds) { query = `${query}&categoryIds=${categoryIds}` };
