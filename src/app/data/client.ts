@@ -52,12 +52,12 @@ export const client = {
             return {
                 data: response.data,
                 status: response.status
-            }
+            };
         } catch (e) {
             return {
                 data: null,
                 status: 404
-            }
+            };
         }
     },
 
@@ -69,7 +69,7 @@ export const client = {
                 "email": email,
                 "password": password
             });
-            status = response.status
+            status = response.status;
         } catch (e: any) {
             status = e.response.status;
         }
@@ -107,7 +107,7 @@ export const client = {
                 headers: cookieHeader ? { Cookie: cookieHeader } : {},
             });
             if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`)
+                throw new Error(`HTTP error! Status: ${response.status}`);
             }
             const { user } = await response.json();
 
@@ -164,8 +164,8 @@ export const client = {
         });
 
         try {
-            const response = await axiosEvent.patch(`/api/users/${username}/`, formData)
-            status = response.status
+            const response = await axiosEvent.patch(`/api/users/${username}/`, formData);
+            status = response.status;
         } catch (e: any) {
             status = e.response.status;
         }
@@ -186,8 +186,8 @@ export const client = {
         });
 
         try {
-            const response = await axiosEvent.patch(`/api/users/${username}/`, formData)
-            status = response.status
+            const response = await axiosEvent.patch(`/api/users/${username}/`, formData);
+            status = response.status;
         } catch (e: any) {
             status = e.response.status;
         }
@@ -198,11 +198,11 @@ export const client = {
     createUserLink: async (type: number, url: string) => {
         const formData = new FormData();
         formData.append("type_id", type.toString());
-        formData.append("link_url", url)
+        formData.append("link_url", url);
 
         try {
-            const response = await axiosClient.post(`/api/user_links/`, formData)
-            return response.status
+            const response = await axiosClient.post(`/api/user_links/`, formData);
+            return response.status;
         } catch (e: any) {
             return e.response?.status || 500;
         }
@@ -210,7 +210,7 @@ export const client = {
 
     getUserLinks: async (username?: string) => {
         try {
-            const response = await axiosClient.get(`/api/users/${username}/user_links/`)
+            const response = await axiosClient.get(`/api/users/${username}/user_links/`);
             return {
                 data: response.data,
                 status: response.status
@@ -226,6 +226,18 @@ export const client = {
     deleteUserLink: async (id: number) => {
         try {
             await axiosClient.delete(`api/user_links/${id}/`);
+        } catch (e: any) {
+            console.error(e);
+        }
+    },
+
+    getUserEvents: async (username?: string) => {
+        try {
+            const response = await axiosClient.get(`/api/users/${username}/events/`);
+            console.log(response.data)
+            return {
+
+            }
         } catch (e: any) {
             console.error(e);
         }
