@@ -1,9 +1,11 @@
-import { Layout } from "../../../components/Layout";
+import { Layout } from "@/app/components/Layout";
+import { UserEventPage } from "@/app/components/pages/UserEventPage";
+
 
 export default function Home() {  
   return (
     <Layout>
-        <p>In progress</p>
+        <UserEventPage/>
     </Layout>
   );
 }
