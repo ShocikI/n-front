@@ -1,7 +1,5 @@
 import axios from "axios";
-import { Event } from "./Event";
-import { Category } from "./Categories";
-import { User } from "../data/User";
+import { Category, Event, User } from "./interfaces";
 
 const axiosClient = axios.create({
     baseURL: `${process.env.NEXT_PUBLIC_API_URL}`,

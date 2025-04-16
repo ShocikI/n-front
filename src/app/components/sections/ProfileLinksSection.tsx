@@ -3,7 +3,7 @@ import { faTiktok, faLinkedin, faXTwitter, faInstagram, faFacebook } from "@fort
 import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import { faLink } from "@fortawesome/free-solid-svg-icons";
 
-import { Links } from "@/app/data/Links"
+import { Links } from "@/app/data/interfaces"
 import { useEffect, useState } from "react";
 import { client } from "@/app/data/client";
 

@@ -5,7 +5,7 @@ import { SearchBarContext } from '@/app/Contexts';
 import { client } from '@/app/data/client';
 import { SearchBar } from '../SearchBar';
 import { AllEvents } from '../AllEvents';
-import { Event } from '@/app/data/Event';
+import { Event } from '@/app/data/interfaces';
 
 
 

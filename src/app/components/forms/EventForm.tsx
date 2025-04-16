@@ -15,7 +15,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 
 import { DatePicker } from "../timepicker/DatePicker";
 import { GoogleMaps } from "../mapComponents/GoogleMaps";
-import { Category } from "@/app/data/Categories";
+import { Category } from "@/app/data/interfaces";
 import { client } from "@/app/data/client";
 
 const formSchema = z.object({
