@@ -234,14 +234,13 @@ export const client = {
     getUserEvents: async (username?: string) => {
         try {
             const response = await axiosClient.get(`/api/users/${username}/events/`);
-            console.log(response.data)
             return {
 
             }
         } catch (e: any) {
             console.error(e);
         }
-    }
+    },
 
 
 }
