@@ -25,6 +25,11 @@ export interface User {
     avatar: string
 }
 
+export interface Owner {
+    username: string,
+    avatar: string
+}
+
 export interface Event {
     title: string;
     date: Date;
@@ -33,7 +38,7 @@ export interface Event {
     description: string;
     price: number;
     avaliable_places: number;
-    owner: string;
+    owner: Owner;
     category: Category;
     image: null | string;
   }
