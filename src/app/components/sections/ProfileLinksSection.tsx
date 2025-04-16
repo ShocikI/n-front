@@ -30,7 +30,6 @@ export const ProfileLinksSection = ({ username, flag, setFlag, isOwner }: Props)
         const getLinks = async () => {
             const response = await client.getUserLinks(username);
             if (response.status == 200) 
-                console.log(response.data)
                 setLinks(response.data); 
         };
 
