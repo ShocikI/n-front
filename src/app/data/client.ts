@@ -235,10 +235,17 @@ export const client = {
         try {
             const response = await axiosClient.get(`/api/users/${username}/events/`);
             return {
-
-            }
+                pastEvents: response.data.past_events,
+                upcomingEvents: response.data.upcoming_events,
+                status: response.status
+            };
         } catch (e: any) {
             console.error(e);
+            return {
+                pastEvents: null,
+                upcomingEvents: null,
+                status: 404
+            };
         }
     },
 
