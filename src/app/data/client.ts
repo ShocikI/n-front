@@ -24,7 +24,6 @@ export const client = {
     getLinkTypes: async () => {
         try {
             const response = await axiosClient.get(`/api/link_types`);
-            console.log(response.data);
             return response.data;
         } catch (e) {
             console.error(e);
