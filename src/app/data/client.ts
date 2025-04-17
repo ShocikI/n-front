@@ -195,13 +195,13 @@ export const client = {
         return status;
     },
 
-    createUserLink: async (type: number, url: string) => {
+    createUserLink: async (type: number, url: string, username?: string) => {
         const formData = new FormData();
         formData.append("type_id", type.toString());
         formData.append("link_url", url);
 
         try {
-            const response = await axiosClient.post(`/api/user_links/`, formData);
+            const response = await axiosClient.post(`/api/users/${username}/links/`, formData);
             return response.status;
         } catch (e: any) {
             return e.response?.status || 500;
@@ -210,7 +210,7 @@ export const client = {
 
     getUserLinks: async (username?: string) => {
         try {
-            const response = await axiosClient.get(`/api/users/${username}/user_links/`);
+            const response = await axiosClient.get(`/api/users/${username}/links/`);
             return {
                 data: response.data,
                 status: response.status
@@ -223,9 +223,9 @@ export const client = {
         }
     },
 
-    deleteUserLink: async (id: number) => {
+    deleteUserLink: async (id: number, username?: string) => {
         try {
-            await axiosClient.delete(`api/user_links/${id}/`);
+            await axiosClient.delete(`api/users/${username}/links/${id}/`);
         } catch (e: any) {
             console.error(e);
         }

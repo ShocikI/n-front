@@ -90,7 +90,11 @@ export const UserProfilePage = () => {
             }
             {
                 ownerLogged && 
-                <CreateUserLinkForm flag={reloadFlag} setFlag={setReloadFlag}/>
+                <CreateUserLinkForm 
+                    username={username?.toString()} 
+                    flag={reloadFlag} 
+                    setFlag={setReloadFlag}
+                />
             }
             <ProfileLinksSection 
                 username={username?.toString()} 

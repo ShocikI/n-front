@@ -44,7 +44,7 @@ export const ProfileLinksSection = ({ username, flag, setFlag, isOwner }: Props)
 
     const handleDelete = async (linkId: number) => {
         try {
-            client.deleteUserLink(linkId)
+            client.deleteUserLink(linkId, username)
             setFlag(!flag)
         } catch (error: any) {
             console.error("Błąd podczas usuwania linku:", error);

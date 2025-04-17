@@ -21,11 +21,12 @@ const formSchema = z.object({
 type FormSchemaType = z.infer<typeof formSchema>
 
 type Props = {
+    username?: string,
     flag: boolean,
     setFlag: (flag: boolean) => void,
 }
 
-export const CreateUserLinkForm: FC<Props> = ({ flag, setFlag }) => {
+export const CreateUserLinkForm: FC<Props> = ({ username, flag, setFlag }) => {
     const [ linkTypes, setLinkTypes ] = useState<LinkType[]>();
     const [ message, setMessage ] = useState('');
 
@@ -54,7 +55,7 @@ export const CreateUserLinkForm: FC<Props> = ({ flag, setFlag }) => {
     }
 
     async function onSubmit(values: FormSchemaType) {
-        const status = await client.createUserLink(values.type, values.url);
+        const status = await client.createUserLink(values.type, values.url, username,);
         switch (status) {
             case 201:
                 setFlag(!flag); break;
