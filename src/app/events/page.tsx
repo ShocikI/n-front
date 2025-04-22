@@ -9,9 +9,7 @@ export default async function Page() {
 
   return (
     <Layout>
-        <div className="flex flex-col p-4">
-          <EventPage />
-        </div>
+        <EventPage />
     </Layout>
   );
 }

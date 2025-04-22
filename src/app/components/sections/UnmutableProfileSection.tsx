@@ -8,20 +8,22 @@ type Props = {
 }
 
 export const UnmutableProfileSection = ({userData, joined}: Props) => {
+    const labelStyle = "w-fit";
+
     return (
-        <section className="flex flex-col w-2/3 gap-2">
+        <section className="flex flex-col w-fit gap-2">
             { userData?.username &&
-                <Label>
+                <Label className={labelStyle}>
                     Username: <span>{userData?.username}</span>
                 </Label>
             }
             { userData?.email &&
-                <Label>
+                <Label className={labelStyle}>
                     Email: <span>{userData?.email}</span>
                 </Label>
             }
             { joined &&
-                <Label>
+                <Label className={labelStyle}>
                     Joined: <span>{joined}</span>
                 </Label>
             }

@@ -29,7 +29,7 @@ export const EventComponent: FC<Props> = ({ event, isOwner }) => {
   dayjs.extend(localizedFormat);
 
   return (
-    <div className="flex flex-col box-border m-2 p-4 max-w-[800px] border-2 border-primary">
+    <div className="flex flex-col box-border mt-2 p-4 w-full max-w-[800px] border-2 border-primary">
       <div className="flex flex-row place-content-between px-1.5">
         <Label className="font-bold">{event.title}</Label>
         <button className="text-xs" onClick={handleHiddingDetails}>
@@ -53,7 +53,10 @@ export const EventComponent: FC<Props> = ({ event, isOwner }) => {
         </div>
         <div className='flex flex-col items-end justify-between'>
           { !!event.image &&
-            <img src={`${process.env.NEXT_PUBLIC_API_URL}/${event.image}`} className='min-w-[160px] h-fit p-4'/>          
+            <img 
+              src={`${process.env.NEXT_PUBLIC_API_URL}/${event.image}`} 
+              className='min-w-[160px] h-fit p-4'
+            />          
           }
           { isOwner &&
             <Button onClick={() => router.push(`/events/${event.id}/`)}>

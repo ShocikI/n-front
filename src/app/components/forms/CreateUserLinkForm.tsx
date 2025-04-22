@@ -75,7 +75,7 @@ export const CreateUserLinkForm: FC<Props> = ({ username, flag, setFlag }) => {
     return (
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} 
-                className="flex flex-col bg-gray-200 rounded p-4"
+                className="flex flex-col w-fit bg-gray-200 rounded p-4"
             >
                 {message && 
                     <Alert className="mb-4" variant="destructive">
@@ -91,7 +91,7 @@ export const CreateUserLinkForm: FC<Props> = ({ username, flag, setFlag }) => {
                     <FormLabel>Category</FormLabel>
                     <FormControl>
                         <Select onValueChange={handleChangeLinkType}>
-                            <SelectTrigger>
+                            <SelectTrigger className="w-[350px]">
                                 <SelectValue placeholder="Categories" />
                             </SelectTrigger>
                             <SelectContent>

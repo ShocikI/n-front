@@ -22,7 +22,7 @@ export const EventsListSection = (
         return null;
 
     return (
-        <section className="flex flex-col">
+        <section className="flex flex-col w-full">
             <Label className="text-xl">{sectionName}:</Label>
             <div className="flex flex-col gap-2">
                 {events?.map((event) => 

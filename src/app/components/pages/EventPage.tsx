@@ -44,7 +44,7 @@ const EventPage = () => {
 
   return (
     <SearchBarContext.Provider value={{ query, setQuery }}>
-      <div className="flex flex-col items-start">
+      <div className="flex flex-col items-center w-4/5">
         <div className="p-1.5">
           <SearchBar />
         </div>

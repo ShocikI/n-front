@@ -4,7 +4,9 @@ import { Layout } from "./components/Layout";
 export default function Home() {  
   return (
     <Layout>
-      <GoogleMaps/>
+      <div className="w-4/5 h-4/5">
+        <GoogleMaps/>
+      </div>
     </Layout>
   );
 }
