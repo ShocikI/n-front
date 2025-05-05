@@ -100,7 +100,3 @@ src/
 - **Icons:** Font Awesome
 - **Maps:** Google Maps API
 - **Code Quality:** ESLint, Prettier
-
-## 📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
