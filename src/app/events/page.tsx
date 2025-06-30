@@ -1,6 +1,6 @@
 import React from 'react';
 import { Layout } from '../components/Layout';
-import EventPage from '../components/pages/EventPage';
+import { EventsPage } from '../components/pages/EventsPage';
 import { client } from '../data/client';
 
 export default async function Page() {
@@ -9,7 +9,7 @@ export default async function Page() {
 
   return (
     <Layout>
-        <EventPage />
+        <EventsPage />
     </Layout>
   );
 }
