@@ -202,6 +202,19 @@ export const client = {
         }
     },
 
+    createEventLink: async (type: number, url: string, eventId: number) => {
+        const formData = new FormData();
+        formData.append("type_id", type.toString());
+        formData.append("link_url", url);
+
+        try {
+            const response = await axiosClient.post(`/api/events/${eventId}/links/`, formData);
+            return response.status;
+        } catch (e: any) {
+            return e.response?.status || 500;
+        }
+    },
+
     getUserLinks: async (username?: string) => {
         try {
             const response = await axiosClient.get(`/api/users/${username}/links/`);
