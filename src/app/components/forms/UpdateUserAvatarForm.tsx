@@ -57,13 +57,13 @@ export const UpdateUserAvatarForm: FC<Props> = ({ username, flag, setFlag }) => 
                 setMessage("Unpredicted error."); break;
             };
                 
-            setTimeout(() => { setMessage('') }, 10000);
+        setTimeout(() => { setMessage('') }, 10000);
     }  
 
     return (
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)}
-                className="flex flex-col w-fit bg-gray-200 rounded space-x-4 p-4"
+                className="flex flex-col w-fit bg-gray-200 rounded space-x-4 p-4 min-w-[350px]"
             >
                 {message && 
                     <Alert className="mb-4" variant="destructive">
@@ -78,7 +78,7 @@ export const UpdateUserAvatarForm: FC<Props> = ({ username, flag, setFlag }) => 
                     <FormItem>
                     <FormLabel>Avatar</FormLabel>
                     <FormControl>
-                        <Input type="file" accept="image/*" onChange={handleChangeFile} className="min-w-[350px]" />
+                        <Input type="file" accept="image/*" onChange={handleChangeFile}/>
                     </FormControl>
                     <FormDescription/>
                     <FormMessage />
