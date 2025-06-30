@@ -9,7 +9,6 @@ import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, For
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { client } from "@/app/data/client";
-import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
     username: z.string().min(2, {

@@ -2,11 +2,11 @@
 import { useState } from "react";
 import { faArrowRight, faArrowLeft} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { clsx } from "clsx";
+
 import { UserPanel } from "./UserPanel";
 import { LoginRegister } from "./LoginRegister";
 
-type Props = {"user": string}
+type Props = { "user": string }
 
 export const SideBar = ( {user}: Props ) => {
     const [isSideBar, setIsSideBar] = useState(false);

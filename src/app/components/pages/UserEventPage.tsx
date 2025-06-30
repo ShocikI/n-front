@@ -41,6 +41,7 @@ export const UserEventPage = () => {
                 flag={reloadFlag}
                 setFlag={setReloadFlag}    
                 isOwner={ownerLogged}
+                editable={true}
             />
             <EventsListSection 
                 sectionName={`Past ${username}'s events`}

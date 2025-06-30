@@ -9,14 +9,15 @@ dayjs.locale('pl');
 
 type Props = {
     sectionName: string,
-    events?: Event[]
+    events?: Event[],
     flag: boolean,
     setFlag: (flag: boolean) => void,
-    isOwner: boolean
+    isOwner: boolean,
+    editable?: boolean
 }
 
 export const EventsListSection = (
-    { sectionName, events, flag, setFlag, isOwner }: Props
+    { sectionName, events, flag, setFlag, isOwner, editable }: Props
 ) => {
     if (!events?.length) 
         return null;
@@ -30,6 +31,7 @@ export const EventsListSection = (
                         event={event} 
                         key={event.id} 
                         isOwner={isOwner}
+                        editable={editable}
                     />
                 )}
             </div>
