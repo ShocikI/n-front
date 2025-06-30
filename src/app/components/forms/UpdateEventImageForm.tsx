@@ -67,7 +67,7 @@ export const UpdateEventImageForm: FC<Props> = ({ event, flag, setFlag }) => {
     return (
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)}
-                className="flex flex-col w-fit bg-gray-200 rounded space-x-4 p-4 w-full min-w-[350px]"
+                className="flex flex-col w-fit h-fit bg-gray-200 rounded space-x-4 p-4 w-full min-w-[350px]"
             >
                 {message && 
                     <Alert className="mb-4" variant="destructive">
