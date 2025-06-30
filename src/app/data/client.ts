@@ -179,13 +179,8 @@ export const client = {
         if (description) formData.append("description", description);
 
         var status;
-        const axiosEvent = axios.create({
-            baseURL: `${process.env.NEXT_PUBLIC_API_URL}`,
-            withCredentials: true,
-        });
-
         try {
-            const response = await axiosEvent.patch(`/api/users/${username}/`, formData);
+            const response = await axiosClient.patch(`/api/users/${username}/`, formData);
             status = response.status;
         } catch (e: any) {
             status = e.response.status;
@@ -216,7 +211,7 @@ export const client = {
             }
         } catch (e: any) {
             return {
-                data: null,
+                data: undefined,
                 status: 404
             }
         }
@@ -248,5 +243,82 @@ export const client = {
         }
     },
 
+    getEventLinks: async (eventId?: number) => {
+        try {
+            const response = await axiosClient.get(`/api/events/${eventId}/links/`);
+            return {
+                data: response.data,
+                status: response.status
+            }
+        } catch (e: any) {
+            return {
+                data: [],
+                status: 404
+            }
+        }
+    },
 
+    deleteEventLink: async (eventId?: number, linkId?: number) => {
+        try {
+            await axiosClient.delete(`api/events/${eventId}/links/${linkId}/`);
+        } catch (e: any) {
+            console.error(e);
+        }
+    },
+
+    getEventById: async (eventId: number) => {
+        try {
+            const response = await axiosClient.get(`api/events/${eventId}/`);
+            return {
+                data: response.data,
+                status: response.status
+            }
+        } catch (e: any) {
+            return {
+                data: [],
+                status: 404
+            }
+        }
+    },
+
+    updateEvent: async (
+        eventId: number, description?: string, price?: string, avaliablePlaces?: string
+    ) => {
+        const formData = new FormData();
+        if (description) formData.append("description", description);
+        if (price) formData.append("price", price);
+        if (avaliablePlaces) formData.append("avaliablePlaces", avaliablePlaces);
+
+        var status;
+        try {
+            const response = await axiosClient.patch(`/api/events/${eventId}/`, formData);
+            status = response.status;
+        } catch (e: any) {
+            status = e.response.status;
+        }
+
+        return status;
+    },
+
+    changeEventImage: async (eventId: number, image?: string | File) => {
+        if (!eventId) throw new Error("EventId is required");
+
+        const formData = new FormData();
+        if (image) formData.append("image", image);
+
+        var status;
+        const axiosEvent = axios.create({
+            baseURL: `${process.env.NEXT_PUBLIC_API_URL}`,
+            withCredentials: true,
+        });
+
+        try {
+            const response = await axiosEvent.patch(`/api/events/${eventId}/`, formData);
+            status = response.status;
+        } catch (e: any) {
+            status = e.response.status;
+        }
+
+        return status;
+    },
 }
