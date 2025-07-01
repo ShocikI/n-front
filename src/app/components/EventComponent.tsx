@@ -7,7 +7,7 @@ import clsx from 'clsx';
 import dayjs from 'dayjs';
 import 'dayjs/locale/pl';
 
-import { Event, Links } from '../data/interfaces';
+import { Event, Links } from '../_data/interfaces';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { useRouter } from 'next/navigation';

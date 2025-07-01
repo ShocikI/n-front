@@ -3,8 +3,8 @@
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-import { client } from "@/app/data/client";
-import { Event } from "@/app/data/interfaces";
+import { client } from "@/app/_data/client";
+import { Event } from "@/app/_data/interfaces";
 import { EventsListSection } from "../sections/EventsListSection";
 
 

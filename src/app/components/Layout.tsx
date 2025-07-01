@@ -1,5 +1,5 @@
 import { cookies } from "next/headers";
-import { client } from "../data/client"
+import { client } from "../_data/client"
 import { SideBar } from "./sidebar/SideBar";
 
 

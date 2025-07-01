@@ -1,5 +1,5 @@
 import React from 'react';
-import { client } from '@/app/data/client';
+import { client } from '@/app/_data/client';
 import { EventForm } from '@/app/components/forms/EventForm';
 import { Layout } from '@/app/components/Layout';
 

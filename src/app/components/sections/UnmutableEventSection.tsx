@@ -1,6 +1,6 @@
 `use client`;
 
-import { Event } from "@/app/data/interfaces"
+import { Event } from "@/app/_data/interfaces"
 import { faImage } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Label } from "@radix-ui/react-label";

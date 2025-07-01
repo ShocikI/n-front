@@ -3,9 +3,9 @@ import { faTiktok, faLinkedin, faXTwitter, faInstagram, faFacebook } from "@fort
 import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import { faLink } from "@fortawesome/free-solid-svg-icons";
 
-import { Links } from "@/app/data/interfaces"
+import { Links } from "@/app/_data/interfaces"
 import { useEffect, useState } from "react";
-import { client } from "@/app/data/client";
+import { client } from "@/app/_data/client";
 import { CreateEventLinkForm } from "../forms/CreateEventLinkForm";
 
 type Props = {

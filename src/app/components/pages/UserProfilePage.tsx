@@ -3,8 +3,8 @@ import { useEffect, useState } from "react"
 import { Label } from "@radix-ui/react-label";
 import { useParams, useRouter } from "next/navigation";
 
-import { User } from "../../data/interfaces";
-import { client } from "../../data/client";
+import { User } from "../../_data/interfaces";
+import { client } from "../../_data/client";
 import { Button } from "@/components/ui/button";
 import { UnmutableProfileSection } from "../sections/UnmutableProfileSection";
 import { ProfileLinksSection } from "../sections/ProfileLinksSection";

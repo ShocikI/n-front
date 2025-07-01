@@ -1,7 +1,7 @@
 'use client'
 import dayjs from 'dayjs';
 
-import { Event } from "@/app/data/interfaces"
+import { Event } from "@/app/_data/interfaces"
 import { Label } from "@/components/ui/label"
 import { EventComponent } from '../EventComponent';
 

@@ -6,11 +6,11 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { Event } from "@/app/data/interfaces";
+import { Event } from "@/app/_data/interfaces";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { client } from "@/app/data/client";
+import { client } from "@/app/_data/client";
 
 
 const formSchema = z.object({

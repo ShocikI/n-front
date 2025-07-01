@@ -1,7 +1,7 @@
 'use client'
 
 import { useRouter } from "next/navigation";
-import { client } from "@/app/data/client";
+import { client } from "@/app/_data/client";
 
 export const UserPanel = () => {
     const router = useRouter();    
