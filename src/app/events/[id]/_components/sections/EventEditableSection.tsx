@@ -1,9 +1,9 @@
 'use client'
 
 import { Event } from "@/app/_data/interfaces"
-import { EditEventForm } from "../_forms/EditEventForm"
-import { CreateEventLinkForm } from "../_forms/CreateEventLinkForm"
-import { UpdateEventImageForm } from "../_forms/UpdateEventImageForm"
+import { EditEventForm } from "../forms/EditEventForm"
+import { CreateEventLinkForm } from "../forms/CreateEventLinkForm"
+import { UpdateEventImageForm } from "../forms/UpdateEventImageForm"
 
 type Props = {
     event: Event,

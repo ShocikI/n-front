@@ -1,4 +1,4 @@
-import { GoogleMaps } from "./_components/_mapComponents/GoogleMaps";
+import { GoogleMaps } from "./_components/mapComponents/GoogleMaps";
 import { Layout } from "./_components/Layout";
 
 

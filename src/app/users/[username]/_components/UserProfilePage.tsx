@@ -8,11 +8,11 @@ import { faCamera } from "@fortawesome/free-solid-svg-icons";
 import { Button } from "@/components/ui/button";
 import { User } from "@/app/_data/interfaces";
 import { client } from "@/app/_data/client";
-import { UnmutableProfileSection } from "./_sections/UnmutableProfileSection";
-import { ProfileLinksSection } from "./_sections/ProfileLinksSection";
-import { UpdateUserAvatarForm } from "./_forms/UpdateUserAvatarForm";
-import { UpdateUserDescriptionForm } from "./_forms/UpdateUserDescriptionForm";
-import { CreateUserLinkForm } from "./_forms/CreateUserLinkForm";
+import { UnmutableProfileSection } from "./sections/UnmutableProfileSection";
+import { UpdateUserAvatarForm } from "./forms/UpdateUserAvatarForm";
+import { UpdateUserDescriptionForm } from "./forms/UpdateUserDescriptionForm";
+import { CreateUserLinkForm } from "./forms/CreateUserLinkForm";
+import { ProfileLinksSection } from "./sections/ProfileLinksSection";
 
 export const UserProfilePage = () => {
     const router = useRouter();

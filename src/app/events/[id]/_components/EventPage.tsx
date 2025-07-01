@@ -4,11 +4,9 @@ import { client } from "@/app/_data/client";
 import { Event } from "@/app/_data/interfaces";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faImage } from "@fortawesome/free-solid-svg-icons";
-import { UnmutableEventSection } from "./_sections/UnmutableEventSection";
-import { EventEditableSection } from "./_sections/EventEditableSection";
-import { EventLinksSection } from "./_sections/EventLinksSection";
+import { UnmutableEventSection } from "./sections/UnmutableEventSection";
+import { EventEditableSection } from "./sections/EventEditableSection";
+import { EventLinksSection } from "./sections/EventLinksSection";
 
 export const EventPage = () => {
     const router = useRouter();
