@@ -57,13 +57,13 @@ const StartSearchbar = ({
 
           <button className='box-border h-10 w-10' type="submit" onClick={handleGetCurrentLocation}>
             <FontAwesomeIcon icon={faLocationCrosshairs} 
-              className='size-4 mx-2 hover:text-secondary' 
+              className='size-4 mx-2 text-gray-400 hover:text-black' 
               />
           </button>
 
           <button className='box-border' type="submit" onClick={routeToEventsView}>
             <FontAwesomeIcon icon={faArrowRight} 
-              className='size-6 mx-1 p-2 rounded-lg bg-primary hover:text-white hover:bg-secondary' 
+              className='size-6 mx-1 p-2 rounded-lg bg-gray-200 hover:text-white hover:bg-black' 
               />
           </button>
         </div>

@@ -19,7 +19,7 @@ export const SideBar = ( {user}: Props ) => {
             <button className=""
             onClick={handleIsSideBar} >
                 <FontAwesomeIcon icon={isSideBar ? faArrowLeft: faArrowRight} 
-                    className='size-6 mx-1 p-2 rounded-full bg-primary hover:text-white hover:bg-secondary'/>
+                    className='size-6 mx-1 p-2 rounded-full bg-gray-200 hover:text-white hover:bg-black'/>
             </button>
         </div>
         
