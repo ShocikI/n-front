@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 import { client } from "@/app/_data/client";
 import { Event } from "@/app/_data/interfaces";
-import { EventsListSection } from "../sections/EventsListSection";
+import { EventsListSection } from "./EventsListSection";
 
 
 export const UserEventPage = () => {

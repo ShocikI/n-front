@@ -1,5 +1,6 @@
-import { LoginForm } from "../forms/LoginForm";
-import { RegistrationForm } from "../forms/RegistrationForm";
+import { LoginForm } from "../_forms/LoginForm"
+import { RegistrationForm } from "../_forms/RegistrationForm"
+
 
 
 export const LoginRegister = () => {    

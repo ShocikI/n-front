@@ -1,5 +1,6 @@
-import { UserProfilePage } from "@/app/components/pages/UserProfilePage";
-import { Layout } from "../../components/Layout";
+import { Layout } from "../../_components/Layout";
+import { UserProfilePage } from "./_components/UserProfilePage";
+
 
 export default function Home() {  
   return (

@@ -6,7 +6,6 @@ import { faLink } from "@fortawesome/free-solid-svg-icons";
 import { Links } from "@/app/_data/interfaces"
 import { useEffect, useState } from "react";
 import { client } from "@/app/_data/client";
-import { CreateEventLinkForm } from "../forms/CreateEventLinkForm";
 
 type Props = {
     id?: number,

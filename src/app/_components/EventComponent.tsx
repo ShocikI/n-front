@@ -1,9 +1,6 @@
 'use client';
 
-import { FC, useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
-import clsx from 'clsx';
+import { FC } from 'react';
 import dayjs from 'dayjs';
 import 'dayjs/locale/pl';
 
@@ -11,7 +8,6 @@ import { Event, Links } from '../_data/interfaces';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { useRouter } from 'next/navigation';
-import { EventLinksSection } from './sections/EventLinksSection';
 
 dayjs.locale('pl');
 

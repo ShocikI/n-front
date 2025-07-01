@@ -3,7 +3,7 @@ import dayjs from 'dayjs';
 
 import { Event } from "@/app/_data/interfaces"
 import { Label } from "@/components/ui/label"
-import { EventComponent } from '../EventComponent';
+import { EventComponent } from '@/app/_components/EventComponent';
 
 dayjs.locale('pl');
 

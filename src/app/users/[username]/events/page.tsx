@@ -1,5 +1,6 @@
-import { Layout } from "@/app/components/Layout";
-import { UserEventPage } from "@/app/components/pages/UserEventPage";
+
+import { Layout } from "@/app/_components/Layout";
+import { UserEventPage } from "./_components/UserEventPage";
 
 
 export default function Home() {  

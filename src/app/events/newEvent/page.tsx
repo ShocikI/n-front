@@ -1,7 +1,7 @@
 import React from 'react';
-import { client } from '@/app/_data/client';
-import { EventForm } from '@/app/components/forms/EventForm';
-import { Layout } from '@/app/components/Layout';
+
+import { EventForm } from './_components/EventForm';
+import { Layout } from '@/app/_components/Layout';
 
 export default async function Page() {
   return (

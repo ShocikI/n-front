@@ -1,11 +1,11 @@
 `use client`;
 
-import { Event } from "@/app/_data/interfaces"
 import { faImage } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Label } from "@radix-ui/react-label";
 import { useRouter } from "next/navigation";
 
+import { Event } from "@/app/_data/interfaces"
 
 type Props = { 
     event?: Event,
