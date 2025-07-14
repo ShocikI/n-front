@@ -131,7 +131,7 @@ export const client = {
 
         if (description) formData.append("description", description);
         if (price) formData.append("price", "" + price);
-        if (avaliablePlaces) formData.append("avaliablePlaces", "" + avaliablePlaces);
+        if (avaliablePlaces) formData.append("avaliable_places", "" + avaliablePlaces);
         if (image) formData.append("image", image);
 
         var status;
