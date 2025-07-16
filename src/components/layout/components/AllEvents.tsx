@@ -1,7 +1,7 @@
 'use client';
 import React, { FC, useContext } from 'react';
-import { SearchBarContext } from '../../../app/Contexts';
-import { Event } from '../../../_utils/interfaces';
+import { SearchBarContext } from '../../../contexts/Contexts';
+import { Event } from '../../../utils/interfaces';
 import { EventComponent } from './EventComponent';
 
 type Props = { events: Event[] };

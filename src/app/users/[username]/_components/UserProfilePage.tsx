@@ -6,8 +6,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCamera } from "@fortawesome/free-solid-svg-icons";
 
 import { Button } from "@/components/ui/button";
-import { User } from "@/_utils/interfaces";
-import { client } from "@/_utils/client";
+import { User } from "@/utils/interfaces";
+import { client } from "@/utils/client";
 import { UnmutableProfileSection } from "./sections/UnmutableProfileSection";
 import { UpdateUserAvatarForm } from "./forms/UpdateUserAvatarForm";
 import { UpdateUserDescriptionForm } from "./forms/UpdateUserDescriptionForm";

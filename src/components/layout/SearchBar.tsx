@@ -1,6 +1,6 @@
 'use client';
+import { SearchBarContext } from '@/contexts/Contexts';
 import React, { ChangeEvent, useContext, useState } from 'react';
-import { SearchBarContext } from '../Contexts';
 
 export const SearchBar = () => {
   const { query, setQuery } = useContext(SearchBarContext);

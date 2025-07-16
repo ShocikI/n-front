@@ -1,6 +1,6 @@
 'use client'
 
-import { Event } from "@/_utils/interfaces"
+import { Event } from "@/utils/interfaces"
 import { EditEventForm } from "../forms/EditEventForm"
 import { CreateEventLinkForm } from "../forms/CreateEventLinkForm"
 import { UpdateEventImageForm } from "../forms/UpdateEventImageForm"

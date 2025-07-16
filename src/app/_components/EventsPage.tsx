@@ -1,9 +1,9 @@
 'use client';
 import { useContext, useEffect, useState } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
-import { SearchBarContext } from '@/app/Contexts';
-import { client } from '@/_utils/client';
-import { Event } from '@/_utils/interfaces';
+import { SearchBarContext } from '@/contexts/Contexts';
+import { client } from '@/utils/client';
+import { Event } from '@/utils/interfaces';
 import { AllEvents } from '../../components/layout/components/AllEvents';
 import { SearchBar } from '@/components/layout/SearchBar';
 

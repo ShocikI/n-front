@@ -1,7 +1,7 @@
 'use client';
 
-import { client } from "@/_utils/client";
-import { Event } from "@/_utils/interfaces";
+import { client } from "@/utils/client";
+import { Event } from "@/utils/interfaces";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { UnmutableEventSection } from "./sections/UnmutableEventSection";

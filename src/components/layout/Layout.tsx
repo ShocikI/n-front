@@ -1,5 +1,5 @@
 import { cookies } from "next/headers";
-import { client } from "../../_utils/client"
+import { client } from "../../utils/client"
 import { SideBar } from "../../components/layout/sidebar/SideBar";
 
 

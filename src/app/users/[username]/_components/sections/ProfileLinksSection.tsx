@@ -3,9 +3,9 @@ import { faTiktok, faLinkedin, faXTwitter, faInstagram, faFacebook } from "@fort
 import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import { faLink } from "@fortawesome/free-solid-svg-icons";
 
-import { Links } from "@/_utils/interfaces"
+import { Links } from "@/utils/interfaces"
 import { useEffect, useState } from "react";
-import { client } from "@/_utils/client";
+import { client } from "@/utils/client";
 
 type Props = {
     username?: string,

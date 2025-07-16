@@ -13,8 +13,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 
-import { Category } from "@/_utils/interfaces";
-import { client } from "@/_utils/client";
+import { Category } from "@/utils/interfaces";
+import { client } from "@/utils/client";
 import { DatePicker } from "@/components/layout/timepicker/DatePicker";
 import { GoogleMaps } from "@/components/layout/mapComponents/GoogleMaps";
 

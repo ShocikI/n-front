@@ -1,5 +1,5 @@
 import React from 'react';
-import { client } from '../../_utils/client';
+import { client } from '../../utils/client';
 import { EventsPage } from '../_components/EventsPage';
 import { Layout } from '@/components/layout/Layout';
 

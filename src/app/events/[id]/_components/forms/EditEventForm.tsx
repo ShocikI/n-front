@@ -6,8 +6,8 @@ import { useRouter } from "next/navigation";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { Event } from "@/_utils/interfaces";
-import { client } from "@/_utils/client";
+import { Event } from "@/utils/interfaces";
+import { client } from "@/utils/client";
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";

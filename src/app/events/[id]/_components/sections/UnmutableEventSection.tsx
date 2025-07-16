@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Label } from "@radix-ui/react-label";
 import { useRouter } from "next/navigation";
 
-import { Event } from "@/_utils/interfaces"
+import { Event } from "@/utils/interfaces"
 
 type Props = { 
     event?: Event,
