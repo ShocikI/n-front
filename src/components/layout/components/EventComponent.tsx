@@ -4,7 +4,7 @@ import { FC } from 'react';
 import dayjs from 'dayjs';
 import 'dayjs/locale/pl';
 
-import { Event, Links } from '../../_utils/interfaces';
+import { Event } from '@/utils/interfaces';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { useRouter } from 'next/navigation';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { client } from '../../utils/client';
-import { EventsPage } from '../_components/EventsPage';
+import { EventsPage } from './_components/EventsPage';
 import { Layout } from '@/components/layout/Layout';
 
 export default async function Page() {

@@ -25,7 +25,7 @@ export const EventsListSection = (
     return (
         <section className="flex flex-col w-full">
             <Label className="text-xl">{sectionName}:</Label>
-            <div className="flex flex-row flex-wrap gap-2">
+            <div className="flex flex-row flex-wrap justify-evenly gap-2">
                 {events?.map((event) => 
                     <EventComponent 
                         event={event} 
