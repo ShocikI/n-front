@@ -1,5 +1,4 @@
-
-import { Layout } from "@/app/_components/Layout";
+import { Layout } from '@/components/layout/Layout';
 import { UserEventPage } from "./_components/UserEventPage";
 
 

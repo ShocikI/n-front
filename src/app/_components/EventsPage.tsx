@@ -4,8 +4,8 @@ import { useSearchParams, useRouter } from 'next/navigation';
 import { SearchBarContext } from '@/app/Contexts';
 import { client } from '@/_utils/client';
 import { Event } from '@/_utils/interfaces';
-import { SearchBar } from './SearchBar';
-import { AllEvents } from './AllEvents';
+import { AllEvents } from '../../components/layout/components/AllEvents';
+import { SearchBar } from '@/components/layout/SearchBar';
 
 
 

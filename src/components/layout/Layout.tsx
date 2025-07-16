@@ -1,6 +1,6 @@
 import { cookies } from "next/headers";
 import { client } from "../../_utils/client"
-import { SideBar } from "./sidebar/SideBar";
+import { SideBar } from "../../components/layout/sidebar/SideBar";
 
 
 export const Layout = async ({ children }:any) => {

@@ -1,4 +1,4 @@
-import { Layout } from "../../_components/Layout";
+import { Layout } from '@/components/layout/Layout';
 import { UserProfilePage } from "./_components/UserProfilePage";
 
 

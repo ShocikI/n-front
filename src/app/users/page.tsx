@@ -1,5 +1,4 @@
-
-import { Layout } from "../_components/Layout";
+import { Layout } from '@/components/layout/Layout';
 import { useEffect } from "react";
 
 export default async function Home() {  
