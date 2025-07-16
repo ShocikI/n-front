@@ -2,8 +2,8 @@
 import { useContext, useEffect, useState } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { SearchBarContext } from '@/app/Contexts';
-import { client } from '@/app/_data/client';
-import { Event } from '@/app/_data/interfaces';
+import { client } from '@/_utils/client';
+import { Event } from '@/_utils/interfaces';
 import { SearchBar } from './SearchBar';
 import { AllEvents } from './AllEvents';
 

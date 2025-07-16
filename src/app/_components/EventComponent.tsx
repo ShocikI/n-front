@@ -4,7 +4,7 @@ import { FC } from 'react';
 import dayjs from 'dayjs';
 import 'dayjs/locale/pl';
 
-import { Event, Links } from '../_data/interfaces';
+import { Event, Links } from '../../_utils/interfaces';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { useRouter } from 'next/navigation';
@@ -24,13 +24,12 @@ export const EventComponent: FC<Props> = ({ event, isOwner, editable }) => {
 
   var localizedFormat = require("dayjs/plugin/localizedFormat");
   dayjs.extend(localizedFormat);
-  console.log(event)
 
   return (
-    <div className="flex flex-col box-border mt-2 p-4 w-1/5 max-w-1/4 min-w-[200px] border-2 border-primary">
+    <div className="flex flex-col box-border gap-1 mt-2 p-4 w-1/5 max-w-1/4 min-w-[200px] border-2 border-primary">
       { !!event.image &&
         <img 
-          src={`${event.image}`} 
+          src={event.image}
           className='min-w-[160px] h-fit'
         />          
       }
@@ -46,8 +45,10 @@ export const EventComponent: FC<Props> = ({ event, isOwner, editable }) => {
           <Label>Dostępne miejsca: {event.avaliable_places}</Label>
         }
       <div className='flex flex-col items-end justify-between'>
-        { ( isOwner || editable ) &&
-          <Button onClick={() => router.push(`/events/${event.id}/`)}>
+        { ( isOwner && editable ) &&
+          <Button onClick={() => router.push(`/events/${event.id}/`)}
+            className='mt-1'
+          >
             Edit event
           </Button>
         }

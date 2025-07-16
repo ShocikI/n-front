@@ -11,8 +11,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 
-import { LinkType, Event } from "@/app/_data/interfaces";
-import { client } from "@/app/_data/client";
+import { LinkType, Event } from "@/_utils/interfaces";
+import { client } from "@/_utils/client";
 
 const formSchema = z.object({
     type: z.number(),

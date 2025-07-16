@@ -1,6 +1,6 @@
 import { Label } from "@radix-ui/react-label"
 
-import { User } from "@/app/_data/interfaces"
+import { User } from "@/_utils/interfaces"
 
 type Props = {
     userData?: User,
