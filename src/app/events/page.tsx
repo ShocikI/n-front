@@ -1,7 +1,7 @@
 import React from 'react';
 import { client } from '../../utils/client';
 import { EventsPage } from './_components/EventsPage';
-import { Layout } from '@/components/layout/Layout';
+import { Layout } from '@/components/layout/layouts/Layout';
 
 export default async function Page() {
   const categories = await client.getCategories();

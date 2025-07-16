@@ -5,7 +5,7 @@ import { SearchBarContext } from '@/contexts/Contexts';
 import { client } from '@/utils/client';
 import { Event } from '@/utils/interfaces';
 import { AllEvents } from './AllEvents';
-import { SearchBar } from '@/components/layout/SearchBar';
+import { SearchBar } from '@/components/layout/components/SearchBar';
 
 
 

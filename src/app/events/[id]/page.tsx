@@ -1,6 +1,6 @@
 
 
-import { Layout } from '@/components/layout/Layout';
+import { Layout } from '@/components/layout/layouts/Layout';
 import { EventPage } from "./_components/EventPage";
 
 export default async function Home() {
