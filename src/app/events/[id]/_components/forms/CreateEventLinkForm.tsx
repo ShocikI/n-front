@@ -62,7 +62,7 @@ export const CreateEventLinkForm: FC<Props> = ({ eventId, flag, setFlag }) => {
             case 401: 
                 setMessage("Unauthorized access."); break;
             case 404:
-                setMessage("Unsuccessful update"); break;
+                setMessage("Not found."); break;
             case 500:
                 setMessage("Server issue."); break;
             default:
