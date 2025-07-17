@@ -1,10 +1,13 @@
 import { Event } from "@/utils/interfaces";
 
-type Props = { event: Event };
+type Props = { event?: Event };
 
 export const ImageComponent = ({ event }: Props) => {
     
     const getImage = () => {
+        if (!event) 
+            return undefined
+
         if (event.image != null) {
             if (event.image.startsWith("/public"))
                 return `${process.env.NEXT_PUBLIC_API_URL}/${event.image}`

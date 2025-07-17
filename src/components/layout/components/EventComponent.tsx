@@ -9,6 +9,8 @@ import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { useRouter } from 'next/navigation';
 import { ImageComponent } from './ImageComponent';
+import { PriceComponent } from './PriceComponent';
+import { AvaliablePlaceComponent } from './AvaliablePlacesComponent';
 
 dayjs.locale('pl');
 
@@ -34,12 +36,8 @@ export const EventComponent: FC<Props> = ({ event, isOwner, editable }) => {
       </button>
         <Label>{dayjs(event.date).format('LLL')}</Label>
         <Label>Kategoria: {event.category.title}</Label>
-        { !!event.price &&
-          <Label>Cena: {event.price} zł</Label>
-        }
-        { !!event.avaliable_places &&
-          <Label>Dostępne miejsca: {event.avaliable_places}</Label>
-        }
+        <PriceComponent event={event} />
+        <AvaliablePlaceComponent event={event} />
       <div className='flex flex-col items-end justify-between'>
         { ( isOwner && editable ) &&
           <Button onClick={() => router.push(`/events/${event.id}/`)}

@@ -1,59 +1,49 @@
 `use client`;
 
-import { faImage } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Label } from "@radix-ui/react-label";
 import { useRouter } from "next/navigation";
+import dayjs from 'dayjs';
+import 'dayjs/locale/pl';
 
 import { Event } from "@/utils/interfaces"
+import { ImageComponent } from "@/components/layout/components/ImageComponent";
+import { PriceComponent } from "@/components/layout/components/PriceComponent";
+import { AvaliablePlaceComponent } from "@/components/layout/components/AvaliablePlacesComponent";
+
+dayjs.locale('pl');
 
 type Props = { 
-    event?: Event,
-    isOwner?: boolean
-}
+  event?: Event,
+  isOwner?: boolean
+};
 
 export const UnmutableEventSection = ({ event, isOwner }: Props) => {
-    const strDateArray = event?.date.toString().split("T");
-    const router = useRouter();
+  const router = useRouter();
 
-    const moveToUserProfile = async () => {
-            router.push(`/users/${event?.owner.username}/`);
-        }
+  const moveToUserProfile = async () => {
+      router.push(`/users/${event?.owner.username}/`);
+    }
 
-    return (
-        <main className="flex flex-col">
-            <section className="flex flex-row gap-4">
-                { !!event?.image 
-                    ?
-                    <div className="items-start">
-                        <img src={event?.image} className="max-h-[320px] min-h-[160px] rounded-xl"/>
-                    </div>    
-                    :
-                    <div>
-                        <FontAwesomeIcon icon={faImage} className="text-xl p-4 text-gray-600 h-[80px]" />
-                    </div> 
-                }
-                <section className="flex flex-col w-fit gap-2">
-                    <Label className="font-bold">{event?.title}</Label>
-                    <button 
-                        onClick={moveToUserProfile}
-                        className="flex place-start underline hover:no-underline hover:text-white"
-                        >Owner: {event?.owner.username}</button>
-                    {!!strDateArray && <p>{strDateArray[0]} {strDateArray[1].slice(0,5)}</p>}
-                    <p>{event?.address}</p>
-                    {!isOwner && (
-                        event?.avaliable_places != 0 
-                        ? <p>Avaliable places: {event?.avaliable_places}</p>
-                        : <p>Unlimited seating</p>
-                    )}
-                    {!isOwner && (
-                        event?.price != 0 
-                        ? <p>Price: {event?.price}</p>
-                        : <p>Free entry</p>
-                    )}
-                </section>
-            </section>
-            <p className="pt-4">{!isOwner && event?.description}</p>
-        </main>
-    )
+  var localizedFormat = require("dayjs/plugin/localizedFormat");
+  dayjs.extend(localizedFormat);
+
+  return (
+    <main className="flex flex-col">
+      <section className="flex flex-row gap-4">
+        <ImageComponent event={event} />
+        <section className="flex flex-col w-fit gap-2">
+          <Label className="font-bold">{event?.title}</Label>
+          <button 
+            onClick={moveToUserProfile}
+            className="flex place-start underline hover:no-underline hover:text-white"
+            >Owner: {event?.owner.username}</button>
+          <Label>{dayjs(event?.date).format('LLL')}</Label>
+          <Label>{event?.address}</Label>
+          { !isOwner && <AvaliablePlaceComponent event={event}/> }
+          { !isOwner && <PriceComponent event={event}/> }
+        </section>
+      </section>
+      <p className="pt-4">{!isOwner && event?.description}</p>
+    </main>
+  )
 }
