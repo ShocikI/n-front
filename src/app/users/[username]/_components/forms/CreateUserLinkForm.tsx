@@ -58,6 +58,7 @@ export const CreateUserLinkForm: FC<Props> = ({ username, flag, setFlag }) => {
         const status = await client.createUserLink(values.type, values.url, username,);
         switch (status) {
             case 201:
+                form.reset({ type: 0, url: "" });
                 setFlag(!flag); break;
             case 401: 
                 setMessage("Unauthorized access."); break;

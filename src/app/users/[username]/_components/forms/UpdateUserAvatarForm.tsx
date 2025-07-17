@@ -46,6 +46,7 @@ export const UpdateUserAvatarForm: FC<Props> = ({ username, flag, setFlag }) => 
         const status = await client.changeUserAvatar(username, values.avatar);
         switch (status) {
             case 200:
+                form.reset({ avatar: undefined })
                 setFlag(!flag); break;
             case 401: 
                 setMessage("Unauthorized access."); break;
