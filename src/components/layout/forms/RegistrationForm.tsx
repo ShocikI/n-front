@@ -46,7 +46,14 @@ export const RegistrationForm: FC = () => {
         
         switch (status) {
             case 201:
-                setMessage("User registered."); break;
+                setMessage("User registered."); 
+                form.reset({
+                    username: "",
+                    password: "",
+                    rePassword: "",
+                    email: ""
+                })
+                break;
             case 400:
                 setMessage("User already exists!"); break;
             default:
