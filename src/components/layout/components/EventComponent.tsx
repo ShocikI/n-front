@@ -8,6 +8,7 @@ import { Event } from '@/utils/interfaces';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { useRouter } from 'next/navigation';
+import { ImageComponent } from './ImageComponent';
 
 dayjs.locale('pl');
 
@@ -27,12 +28,7 @@ export const EventComponent: FC<Props> = ({ event, isOwner, editable }) => {
 
   return (
     <div className="flex flex-col box-border gap-1 mt-2 p-4 w-1/5 max-w-1/4 min-w-[200px] border-2 border-primary">
-      { !!event.image &&
-        <img 
-          src={event.image}
-          className='min-w-[160px] h-fit'
-        />          
-      }
+      <ImageComponent event={event}/>
       <button className="font-bold place-start" onClick={moveToEventPage}>
           {event.title}
       </button>
