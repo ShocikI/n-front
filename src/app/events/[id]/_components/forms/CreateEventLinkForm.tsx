@@ -58,6 +58,7 @@ export const CreateEventLinkForm: FC<Props> = ({ eventId, flag, setFlag }) => {
         const status = await client.createEventLink(values.type, values.url, eventId,);
         switch (status) {
             case 201:
+                form.reset({ type: 0, url: "" });
                 setFlag(!flag); break;
             case 401: 
                 setMessage("Unauthorized access."); break;

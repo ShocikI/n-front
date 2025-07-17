@@ -50,6 +50,7 @@ export const UpdateEventImageForm: FC<Props> = ({ event, flag, setFlag }) => {
         const status = await client.changeEventImage(event.id, values.image);
         switch (status) {
             case 200:
+                form.reset({ image: undefined })
                 setFlag(!flag); break;
             case 401: 
                 setMessage("Unauthorized access."); break;
